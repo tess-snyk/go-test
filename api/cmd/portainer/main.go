@@ -22,6 +22,7 @@ import (
 	"github.com/portainer/portainer/api/database"
 	"github.com/portainer/portainer/api/dataservices"
 	"github.com/portainer/portainer/api/datastore"
+	"github.com/portainer/portainer/api/demo"
 	"github.com/portainer/portainer/api/docker"
 	"github.com/portainer/portainer/api/exec"
 	"github.com/portainer/portainer/api/filesystem"
@@ -547,6 +548,7 @@ func buildServer(flags *portainer.CLIFlags) portainer.Server {
 	openAMTService := openamt.NewService(dataStore)
 
 	cryptoService := initCryptoService()
+
 	digitalSignatureService := initDigitalSignatureService()
 
 	sslService, err := initSSLService(*flags.AddrHTTPS, *flags.Data, *flags.SSLCert, *flags.SSLKey, fileService, dataStore, shutdownTrigger)
@@ -608,6 +610,14 @@ func buildServer(flags *portainer.CLIFlags) portainer.Server {
 	}
 
 	applicationStatus := initStatus(instanceID)
+
+	demoService := demo.NewService()
+	if *flags.DemoEnvironment {
+		err := demoService.Init(dataStore, cryptoService)
+		if err != nil {
+			log.Fatalf("failed initializing demo environment: %v", err)
+		}
+	}
 
 	err = initEndpoint(flags, dataStore, snapshotService)
 	if err != nil {
@@ -698,6 +708,7 @@ func buildServer(flags *portainer.CLIFlags) portainer.Server {
 		ShutdownTrigger:             shutdownTrigger,
 		StackDeployer:               stackDeployer,
 		BaseURL:                     *flags.BaseURL,
+		DemoService:                 demoService,
 	}
 }
 
