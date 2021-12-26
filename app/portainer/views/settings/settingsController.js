@@ -172,7 +172,7 @@ angular.module('portainer.app').controller('SettingsController', [
 
     function initView() {
       const state = StateManager.getState();
-      $scope.state.isDemo = state.application.demoEnvironment;
+      $scope.state.isDemo = state.application.demoEnvironment.enabled;
 
       SettingsService.settings()
         .then(function success(data) {
