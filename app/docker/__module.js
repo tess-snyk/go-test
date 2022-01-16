@@ -36,7 +36,6 @@ angular.module('portainer.docker', ['portainer.app', containersModule]).config([
             }
 
             EndpointProvider.setEndpointID(endpoint.Id);
-            EndpointProvider.setOfflineModeFromStatus(endpoint.Status);
 
             const extensions = await LegacyExtensionManager.initEndpointExtensions(endpoint);
             await StateManager.updateEndpointState(endpoint, extensions);
