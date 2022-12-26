@@ -102,7 +102,7 @@
     "clsx": "^1.1.1",
     "codemirror": "~5.64.0",
     "core-js": "^3.19.3",
-    "fast-json-patch": "^3.1.0",
+    "fast-json-patch": "^3.1.1",
     "file-saver": "^2.0.5",
     "filesize": "~3.3.0",
     "filesize-parser": "^1.5.0",
