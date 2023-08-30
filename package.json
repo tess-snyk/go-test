@@ -30,7 +30,9 @@
     "dev:client": "grunt clean:client && webpack-dev-server --config=./webpack/webpack.develop.js",
     "build:server:offline": "cd ./api/cmd/portainer && CGO_ENABLED=0 go build -a --installsuffix cgo --ldflags '-s' && mv -f portainer ../../../dist/portainer",
     "clean:all": "grunt clean:all",
-    "format": "prettier --loglevel warn --write \"**/*.{js,css,html}\""
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,html}\"",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "scriptsComments": {
     "build": "Build the entire app (backend/frontend) in development mode",
@@ -85,7 +87,8 @@
     "toastr": "github:CodeSeven/toastr#semver:~2.1.3",
     "ui-select": "^0.19.8",
     "uuid": "^3.3.2",
-    "xterm": "^3.8.0"
+    "xterm": "^3.8.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -153,5 +156,6 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md,html}": "prettier --write"
-  }
+  },
+  "snyk": true
 }

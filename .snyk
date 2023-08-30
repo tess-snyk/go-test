@@ -1,0 +1,34 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hawk:20160119':
+    - rdash-ui > gulp-less > less > request > hawk:
+        patched: '2023-08-30T19:54:37.706Z'
+        id: 'npm:hawk:20160119'
+        path: rdash-ui > gulp-less > less > request > hawk
+  'npm:http-signature:20150122':
+    - rdash-ui > gulp-less > less > request > http-signature:
+        patched: '2023-08-30T19:54:37.706Z'
+        id: 'npm:http-signature:20150122'
+        path: rdash-ui > gulp-less > less > request > http-signature
+  'npm:mime:20170907':
+    - rdash-ui > gulp-less > less > mime:
+        patched: '2023-08-30T19:54:37.706Z'
+        id: 'npm:mime:20170907'
+        path: rdash-ui > gulp-less > less > mime
+    - rdash-ui > gulp-less > less > request > form-data > mime:
+        patched: '2023-08-30T19:54:37.706Z'
+        id: 'npm:mime:20170907'
+        path: rdash-ui > gulp-less > less > request > form-data > mime
+  'npm:request:20160119':
+    - rdash-ui > gulp-less > less > request:
+        patched: '2023-08-30T19:54:37.706Z'
+        id: 'npm:request:20160119'
+        path: rdash-ui > gulp-less > less > request
+  'npm:tunnel-agent:20170305':
+    - rdash-ui > gulp-less > less > request > tunnel-agent:
+        patched: '2023-08-30T19:54:37.706Z'
+        id: 'npm:tunnel-agent:20170305'
+        path: rdash-ui > gulp-less > less > request > tunnel-agent
